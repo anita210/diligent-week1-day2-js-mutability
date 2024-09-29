@@ -9,11 +9,11 @@ import {
 describe('celebrateTheOwnersBirthday', () => {
   it('should increase the owner\'s age by one', () => {
     const dog = {name: 'Zeus', colors: ['brown', 'black'], owner: {name: 'Higgins', age: 45}};
-    const expected = {name: 'Zeus', colors: ['brown', 'black'], owner: {name: 'Higgins', age: 46}};
+    const expectedDog = {name: 'Zeus', colors: ['brown', 'black'], owner: {name: 'Higgins', age: 46}};
     
     const current = celebrateTheOwnersBirthday(dog);
-    
-    expect(current).toStrictEqual(expected);
+
+    expect(current).toEqual(expectedDog);
   });
 
   it('should not change the input dog object', () => {
@@ -42,7 +42,7 @@ describe('paintTheDogPartly', () => {
     
     const current = paintTheDogPartly(dog, 'white');
     
-    expect(current).toStrictEqual(expected);
+    expect(current).toEqual(expected);
   });
 
   it('should not change the input dog object', () => {

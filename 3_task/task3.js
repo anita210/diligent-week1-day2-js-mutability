@@ -34,8 +34,10 @@
  * @returns The modified dog object.
  */
 export function celebrateTheOwnersBirthday(dog) {
-  dog.owner.age++
-  return dog
+  let clone = structuredClone(dog);
+  console.log(clone);
+  clone.owner.age++
+  return clone;
 }
 
 /**
@@ -56,8 +58,9 @@ export function celebrateTheOwnersBirthday(dog) {
  * @param {string} newColor 
  */
 export function paintTheDogPartly(dog, newColor) {
-  dog.colors.push(newColor);
-  return dog;
+  let clone = structuredClone(dog);
+  clone.colors.push(newColor);
+  return clone;
 }
 
 /**
@@ -71,8 +74,11 @@ export function paintTheDogPartly(dog, newColor) {
  * @returns the modified cart
  */
 export function increaseItemQuantity(cart, index) {
-  cart[index].quantity++;
-  return cart;
+  let newCart = [...cart];
+  let newItem = { ...cart[index], quantity: cart[index].quantity + 1 };
+  newCart[index] = newItem;
+  
+  return newCart;
 }
 
 /**
@@ -87,12 +93,13 @@ export function increaseItemQuantity(cart, index) {
  * @returns the modified cart
  */
 export function renameItem(cart, index, newName) {
-  if(index >= cart.length) {
+  if (index >= cart.length) {
     throw new Error('Invalid index, the cart has not enough items.');
   }
-
-  cart[index].name = newName;
-  return cart;
+  let newCart = [...cart];
+  let newItem = { ...cart[index], name: newName};
+  newCart[index] = newItem;
+  return newCart;
 }
 
 /**
@@ -109,12 +116,11 @@ export function renameItem(cart, index, newName) {
  * @returns the modified cart
  */
 export function applyDiscount(cart, index, discount) {
-  if(index >= cart.length) {
+  if (index >= cart.length) {
     throw new Error('Invalid index, the cart has not enough items.');
   }
-
-  const item = cart[index]; 
-  const newPrice = item.price * (1 - (discount / 100));
-  item.price = newPrice;
-  return cart;
+  let newCart = [...cart];
+  let newItem = { ...cart[index], price: cart[index].price * (1 - (discount / 100))};
+  newCart[index] = newItem;
+  return newCart;
 }

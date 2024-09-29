@@ -11,3 +11,4 @@ import {
 
 // e.g.
 console.log(celebrateBirthday({name: 'Bob', age: 36}))
+console.log(getMarried({name: 'Bob', age: 36}, 'Jim'))
